@@ -8,7 +8,7 @@ import { ONE_SECOND, SKU_ERROR_MESSAGE } from "./constants";
 import { useSku } from "./context";
 import { containsDot, parseSkuSchema } from "./tools";
 
-export const useValidateSku = () => {
+export const useValidateSku = (productType: string) => {
   const [error, setError] = useState<string | null>(null);
   const { setLoading, setValidity } = useSku();
   const { client } = useJutroDoctorClient();
@@ -69,11 +69,13 @@ export const useValidateSku = () => {
   );
 
   const handleValidateSku = async (skuValue: string) => {
+    if (productType !== "Badanie") {
+      return true;
+    }
     try {
       if (containsDot(skuValue)) {
         throw new Error(SKU_ERROR_MESSAGE.invalidType);
       }
-
       parseSkuSchema(skuValue);
 
       setLoading(true);
