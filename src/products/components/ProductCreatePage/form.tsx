@@ -457,7 +457,7 @@ function useProductCreateForm(
 
   const isSaveDisabledForExamination =
     isSaveDisabledForExaminationPacket ||
-    !isSkuValid(data.sku) ||
+    !isSkuValid(data.sku, form.data.productType.name) ||
     isSkuApiValidating ||
     !isSkuValidFromApi;
 
