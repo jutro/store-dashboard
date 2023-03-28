@@ -143,12 +143,15 @@ const ProductStocks: React.FC<ProductStocksProps> = ({
     }
   };
 
-  const { error, handleValidateSku } = useValidateSku(productType);
+  const {
+    error,
+    // handleValidateSku
+  } = useValidateSku(productType);
 
   const handleOnSkuChange = () => (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) => {
-    handleValidateSku(event.target.value);
+    // handleValidateSku(event.target.value);
     onFormDataChange(event);
   };
 

@@ -4,11 +4,7 @@ export const containsDot = (value: string) => value.includes(".");
 
 export const parseSkuSchema = (skuValue: string) => SkuSchema.parse(+skuValue);
 
-export const isSkuValid = (skuValue: string, productTypeName: string) => {
-  if (productTypeName !== "Badanie") {
-    return true;
-  }
-
+export const isSkuValid = (skuValue: string) => {
   try {
     if (containsDot(skuValue)) {
       throw new Error();

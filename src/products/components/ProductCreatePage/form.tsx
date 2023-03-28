@@ -73,7 +73,7 @@ import { useIntl } from "react-intl";
 import { createPreorderEndDateChangeHandler } from "../../utils/handlers";
 import { ProductStockFormsetData, ProductStockInput } from "../ProductStocks";
 import { useSku } from "../ProductStocks/context";
-import { isSkuValid } from "../ProductStocks/tools";
+// import { isSkuValid } from "../ProductStocks/tools";
 
 export interface ProductCreateFormData extends MetadataFormData {
   category: string;
@@ -259,8 +259,8 @@ function useProductCreateForm(
     triggerChange,
   });
   const {
-    isLoading: isSkuApiValidating,
-    isValid: isSkuValidFromApi,
+    // isLoading: isSkuApiValidating,
+    // isValid: isSkuValidFromApi,
   } = useSku();
 
   const {
@@ -455,11 +455,11 @@ function useProductCreateForm(
 
   const isSaveDisabledForExaminationPacket = loading || !onSubmit;
 
-  const isSaveDisabledForExamination =
-    isSaveDisabledForExaminationPacket ||
-    !isSkuValid(data.sku, form.data.productType.name) ||
-    isSkuApiValidating ||
-    !isSkuValidFromApi;
+  const isSaveDisabledForExamination = isSaveDisabledForExaminationPacket;
+  // ||
+  // !isSkuValid(data.sku) ||
+  // isSkuApiValidating ||
+  // !isSkuValidFromApi;
 
   const isSaveDisabled =
     data?.productType?.name === ProductType.EXAMINATION_PACKET
